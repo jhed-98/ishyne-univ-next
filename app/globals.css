@@ -1,26 +1,191 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─── Tailwind v4 Class-based Dark Mode Config ────────────────────────────── */
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─── Brand Theme Tokens (Tailwind v4 CSS-first) ────────────────────────── */
+@theme {
+  /* Colors - Defined with default values to enable proper utility generation */
+  --color-onyx: #0A0506;
+  --color-onyx-light: #160D10;
+  --color-onyx-border: #26161B;
+  --color-cream: #FDFBF7;
+  --color-rose-gold: #C8956C;
+  --color-champagne: #D4AF37;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Fonts - Mapped to Next.js font families, avoiding self-referential variables */
+  --font-playfair: var(--font-playfair-family), Georgia, serif;
+  --font-poppins: var(--font-poppins-family), system-ui, sans-serif;
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.6s ease-out forwards;
+  --animate-slide-up: slideUp 0.7s ease-out forwards;
+  --animate-slide-in-right: slideInRight 0.4s ease-out forwards;
+  --animate-pulse-gold: pulseGold 2s ease-in-out infinite;
+  --animate-bounce-subtle: bounceSubtle 1.5s ease-in-out infinite;
+
+  /* Keyframes */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(100%); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes pulseGold {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
+    50% { box-shadow: 0 0 0 14px rgba(212, 175, 55, 0); }
+  }
+  @keyframes bounceSubtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+  @keyframes shimmer {
+    to { background-position: 200% center; }
+  }
+  @keyframes typing {
+    0%, 60%, 100% { opacity: 0.3; }
+    30% { opacity: 1; }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── Dark/Light Mode Cascading Variables ─────────────────────────────────── */
+:root, .light {
+  --color-onyx: #FDFBF7; /* Luxurious soft off-white/warm cream background */
+  --color-onyx-light: #FFFFFF; /* Pure white card/panel background */
+  --color-onyx-border: #EFEAE2; /* Soft sand-beige border */
+  --color-cream: #140C0F; /* Sleek dark charcoal/onyx text */
+  --color-rose-gold: #B57C50; /* Richer deeper rose gold for light theme contrast */
+  --color-champagne: #C29F2B; /* Deep antique gold for light theme contrast */
+  
+  --bg-panel-glass: rgba(255, 255, 255, 0.75);
+  --border-gold-glow: rgba(181, 124, 80, 0.15);
+  color-scheme: light;
 }
+
+.dark {
+  --color-onyx: #0A0506; /* Rich velvet onyx/black background */
+  --color-onyx-light: #160D10; /* Dark chocolate/onyx-light card background */
+  --color-onyx-border: #26161B; /* Dark crimson-charcoal border */
+  --color-cream: #FDFBF7; /* Luxurious soft cream text */
+  --color-rose-gold: #C8956C; /* Luminous rose gold */
+  --color-champagne: #D4AF37; /* Bright sparkling gold */
+  
+  --bg-panel-glass: rgba(22, 14, 16, 0.75);
+  --border-gold-glow: rgba(200, 149, 108, 0.2);
+  color-scheme: dark;
+}
+
+/* ─── Base Styles ─────────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  /* margin: 0; */
+  /* padding: 0; */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-onyx);
+  color: var(--color-cream);
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  antialiased: true;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-onyx-light); }
+::-webkit-scrollbar-thumb { background: var(--color-rose-gold); border-radius: 3px; }
+
+/* ─── Selection ───────────────────────────────────────────────────────────── */
+::selection {
+  background-color: rgba(200, 149, 108, 0.3);
+  color: var(--color-cream);
+}
+
+/* ─── Focus Visible ───────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-champagne);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Font Utilities ──────────────────────────────────────────────────────── */
+.font-playfair { font-family: var(--font-playfair), Georgia, serif; }
+.font-poppins  { font-family: var(--font-poppins), system-ui, sans-serif; }
+
+/* ─── Gold Gradient Text ──────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── Animation Utilities ─────────────────────────────────────────────────── */
+.animate-fade-in        { animation: fadeIn 0.6s ease-out forwards; }
+.animate-slide-up       { animation: slideUp 0.7s ease-out forwards; opacity: 0; }
+.animate-slide-in-right { animation: slideInRight 0.4s ease-out forwards; }
+.animate-pulse-gold     { animation: pulseGold 2s ease-in-out infinite; }
+.animate-bounce-subtle  { animation: bounceSubtle 1.5s ease-in-out infinite; }
+
+/* ─── Reduced Motion ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .gradient-text { animation: none; }
+}
+
+/* ─── Transition ease-out-expo ────────────────────────────────────────────── */
+.ease-out-expo { transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+.duration-400  { transition-duration: 400ms; }
+
+/* ─── Glass ───────────────────────────────────────────────────────────────── */
+.glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ─── Premium Luxury Layout Utilities ─────────────────────────────────────── */
+.glass-premium {
+  background: var(--bg-panel-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-gold-glow);
+}
+
+.glow-gold {
+  transition: all 0.3s ease;
+}
+.glow-gold:hover {
+  box-shadow: 0 0 20px 0 rgba(194, 159, 43, 0.15);
+  border-color: var(--color-champagne);
+}
+
+.card-luxury-hover {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-luxury-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -15px rgba(181, 124, 80, 0.15);
+  border-color: rgba(181, 124, 80, 0.4);
+}
+
+/* ─── Typing indicator dots ──────────────────────────────────────────────── */
+.typing-dot { animation: typing 1.2s ease-in-out infinite; }

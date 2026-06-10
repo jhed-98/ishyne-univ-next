@@ -1,0 +1,125 @@
+{
+  "nav": {
+    "home": "Home",
+    "catalog": "Catalog",
+    "about": "About Us",
+    "cart": "Cart"
+  },
+  "hero": {
+    "tagline": "Always shine",
+    "subtitle": "Luxury women's fashion made to stand out.",
+    "cta": "View Collection",
+    "whatsapp_cta": "Chat on WhatsApp"
+  },
+  "benefits": {
+    "item1": "Shipping across Lima",
+    "item2": "Secure payment",
+    "item3": "7-day returns",
+    "item4": "Personalized service"
+  },
+  "catalog": {
+    "title": "Our Collection",
+    "subtitle": "Unique pieces designed for women who shine.",
+    "filter_all": "All",
+    "filter_tops": "Tops",
+    "filter_faldas": "Skirts",
+    "filter_vestidos": "Dresses",
+    "filter_accesorios": "Accessories",
+    "filter_pantalones": "Pants",
+    "no_products": "No products in this category yet.",
+    "add_to_cart": "Add to cart",
+    "view_detail": "View detail",
+    "out_of_stock": "Out of stock"
+  },
+  "product": {
+    "size": "Size",
+    "size_required": "Please select a size to continue",
+    "quantity": "Quantity",
+    "add_to_cart": "Add to cart",
+    "added": "Added!",
+    "before": "Before",
+    "save": "You save",
+    "discount_badge": "% OFF",
+    "description": "Description",
+    "sizes_available": "Available sizes",
+    "whatsapp_buy": "Buy via WhatsApp"
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "empty_sub": "Explore our collection and find something for you.",
+    "subtotal": "Subtotal",
+    "savings": "You save",
+    "total": "Total",
+    "checkout_whatsapp": "Checkout via WhatsApp",
+    "clear_cart": "Clear cart",
+    "remove": "Remove",
+    "size": "Size",
+    "units": "units"
+  },
+  "whatsapp": {
+    "greeting": "Hello, I'd like to place the following order at iShyne:",
+    "item_line": "• {nombre} (Size: {talla}) x{cantidad} — S/ {precio}",
+    "total_line": "TOTAL: S/ {total}",
+    "discount_note": "Includes {descuento}% campaign discount 🎉",
+    "closing": "Thank you!"
+  },
+  "chatbot": {
+    "greeting": "Hi! 👋 I'm iShyne's virtual assistant. How can I help you?",
+    "proactive": "Need help finding your perfect look? ✨",
+    "typing": "Typing...",
+    "placeholder": "Write a message...",
+    "send": "Send",
+    "close": "Close",
+    "options": {
+      "catalog": "View catalog",
+      "sizes": "Size guide",
+      "shipping": "Shipping & payments",
+      "contact": "Chat with an advisor",
+      "featured": "Featured products"
+    },
+    "responses": {
+      "catalog": "Our collection is amazing! Scroll down to browse all products. You can filter by category. 👗",
+      "sizes": "We carry sizes XS, S, M, L, XL and XXL. Want help choosing yours? Write to us on WhatsApp for personalized advice.",
+      "shipping": "We ship across Lima. Payment is on delivery or by transfer. No surprises! 📦",
+      "contact": "Our pleasure! Click here to chat directly with one of our advisors. 💬",
+      "featured": "Here are our most loved looks:",
+      "default": "Thanks for reaching out! For more personalized attention, contact us on WhatsApp. We'd love to help. ✨",
+      "hello": "Hello! So glad you're here. How can I help you today?",
+      "price": "Prices vary by item. You can see exact prices on each product in the catalog. Interested in a specific category?",
+      "discount": "We have special campaigns with exclusive discounts! Check our catalog for updated prices. 🏷️"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "The story behind the shine",
+    "mission_title": "Our Mission",
+    "mission_text": "To empower every woman to shine with confidence, offering accessible luxury fashion that celebrates her unique essence.",
+    "vision_title": "Our Vision",
+    "vision_text": "To be Peru's most beloved women's fashion brand, recognized for its timeless elegance and genuine connection with every client.",
+    "values_title": "Our Values",
+    "values": [
+      { "title": "Elegance", "desc": "Every piece is designed with meticulous attention to detail." },
+      { "title": "Authenticity", "desc": "We celebrate the individuality of every woman." },
+      { "title": "Quality", "desc": "We use premium materials that last and feel luxurious." },
+      { "title": "Trust", "desc": "We build honest and lasting relationships with our clients." }
+    ],
+    "steps_title": "Shop in 3 Steps",
+    "steps": [
+      { "step": "01", "title": "Choose your look", "desc": "Browse the catalog and select the piece you love." },
+      { "step": "02", "title": "Add to cart", "desc": "Select your size and add the product to your cart." },
+      { "step": "03", "title": "Finalize on WhatsApp", "desc": "Close your order directly with our advisor. That easy!" }
+    ]
+  },
+  "theme": {
+    "toggle_dark": "Switch to dark mode",
+    "toggle_light": "Switch to light mode"
+  },
+  "footer": {
+    "slogan": "Always shine.",
+    "rights": "All rights reserved.",
+    "links_title": "iShyne",
+    "social_title": "Follow us",
+    "location": "Lima, Peru"
+  }
+}

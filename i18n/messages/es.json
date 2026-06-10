@@ -1,0 +1,125 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "catalog": "Catálogo",
+    "about": "Nosotras",
+    "cart": "Carrito"
+  },
+  "hero": {
+    "tagline": "Brilla siempre",
+    "subtitle": "Moda femenina de lujo, hecha para destacar.",
+    "cta": "Ver Colección",
+    "whatsapp_cta": "Escríbenos por WhatsApp"
+  },
+  "benefits": {
+    "item1": "Envío a todo Lima",
+    "item2": "Pago seguro",
+    "item3": "Cambios en 7 días",
+    "item4": "Atención personalizada"
+  },
+  "catalog": {
+    "title": "Nuestra Colección",
+    "subtitle": "Piezas únicas diseñadas para mujeres que brillan.",
+    "filter_all": "Todo",
+    "filter_tops": "Tops",
+    "filter_faldas": "Faldas",
+    "filter_vestidos": "Vestidos",
+    "filter_accesorios": "Accesorios",
+    "filter_pantalones": "Pantalones",
+    "no_products": "No hay productos en esta categoría aún.",
+    "add_to_cart": "Agregar al carrito",
+    "view_detail": "Ver detalle",
+    "out_of_stock": "Sin stock"
+  },
+  "product": {
+    "size": "Talla",
+    "size_required": "Selecciona una talla para continuar",
+    "quantity": "Cantidad",
+    "add_to_cart": "Agregar al carrito",
+    "added": "¡Agregado!",
+    "before": "Antes",
+    "save": "Ahorras",
+    "discount_badge": "% DSCTO",
+    "description": "Descripción",
+    "sizes_available": "Tallas disponibles",
+    "whatsapp_buy": "Comprar por WhatsApp"
+  },
+  "cart": {
+    "title": "Tu Carrito",
+    "empty": "Tu carrito está vacío",
+    "empty_sub": "Explora nuestra colección y encuentra algo para ti.",
+    "subtotal": "Subtotal",
+    "savings": "Ahorras",
+    "total": "Total",
+    "checkout_whatsapp": "Finalizar por WhatsApp",
+    "clear_cart": "Vaciar carrito",
+    "remove": "Quitar",
+    "size": "Talla",
+    "units": "uds."
+  },
+  "whatsapp": {
+    "greeting": "Hola, me interesa hacer el siguiente pedido en iShyne:",
+    "item_line": "• {nombre} (Talla: {talla}) x{cantidad} — S/ {precio}",
+    "total_line": "TOTAL: S/ {total}",
+    "discount_note": "Incluye {descuento}% de descuento por campaña 🎉",
+    "closing": "¡Gracias!"
+  },
+  "chatbot": {
+    "greeting": "¡Hola! 👋 Soy la asistente virtual de iShyne. ¿En qué te puedo ayudar?",
+    "proactive": "¿Necesitas ayuda para encontrar tu look perfecto? ✨",
+    "typing": "Escribiendo...",
+    "placeholder": "Escribe un mensaje...",
+    "send": "Enviar",
+    "close": "Cerrar",
+    "options": {
+      "catalog": "Ver catálogo",
+      "sizes": "Guía de tallas",
+      "shipping": "Envíos y pagos",
+      "contact": "Hablar con una asesora",
+      "featured": "Productos destacados"
+    },
+    "responses": {
+      "catalog": "¡Nuestra colección es increíble! Desplázate hacia abajo para ver todos los productos. Puedes filtrar por categoría. 👗",
+      "sizes": "Manejamos tallas XS, S, M, L, XL y XXL. ¿Quieres que te ayude a elegir la tuya? Escríbenos por WhatsApp para asesoría personalizada.",
+      "shipping": "Realizamos envíos a todo Lima. Los pagos son contra entrega o por transferencia. ¡Sin sorpresas! 📦",
+      "contact": "¡Con mucho gusto! Haz clic aquí para chatear directamente con una de nuestras asesoras. 💬",
+      "featured": "Aquí tienes nuestros looks más amados:",
+      "default": "¡Gracias por escribirnos! Para una atención más personalizada, contáctanos por WhatsApp. Estaremos encantadas de ayudarte. ✨",
+      "hello": "¡Hola! Qué alegría verte por aquí. ¿Cómo puedo ayudarte hoy?",
+      "price": "Los precios varían según la prenda. Puedes ver los precios exactos en cada producto del catálogo. ¿Te interesa alguna categoría en especial?",
+      "discount": "¡Tenemos campañas especiales con descuentos exclusivos! Revisa nuestro catálogo para ver los precios actualizados. 🏷️"
+    }
+  },
+  "about": {
+    "title": "Sobre Nosotras",
+    "subtitle": "La historia detrás del brillo",
+    "mission_title": "Nuestra Misión",
+    "mission_text": "Empoderar a cada mujer para que brille con confianza, ofreciendo moda de lujo accesible que celebra su esencia única.",
+    "vision_title": "Nuestra Visión",
+    "vision_text": "Ser la marca de moda femenina más querida del Perú, reconocida por su elegancia atemporal y su conexión genuina con cada clienta.",
+    "values_title": "Nuestros Valores",
+    "values": [
+      { "title": "Elegancia", "desc": "Cada pieza es diseñada con atención meticulosa al detalle." },
+      { "title": "Autenticidad", "desc": "Celebramos la individualidad de cada mujer." },
+      { "title": "Calidad", "desc": "Usamos materiales premium que duran y se sienten lujosos." },
+      { "title": "Confianza", "desc": "Construimos relaciones honestas y duraderas con nuestras clientas." }
+    ],
+    "steps_title": "Compra en 3 Pasos",
+    "steps": [
+      { "step": "01", "title": "Elige tu look", "desc": "Navega el catálogo y selecciona la prenda que te enamora." },
+      { "step": "02", "title": "Agrégalo al carrito", "desc": "Selecciona tu talla y agrega el producto a tu carrito." },
+      { "step": "03", "title": "Finaliza por WhatsApp", "desc": "Cierra tu pedido directamente con nuestra asesora. ¡Así de fácil!" }
+    ]
+  },
+  "theme": {
+    "toggle_dark": "Cambiar a modo oscuro",
+    "toggle_light": "Cambiar a modo claro"
+  },
+  "footer": {
+    "slogan": "Brilla siempre.",
+    "rights": "Todos los derechos reservados.",
+    "links_title": "iShyne",
+    "social_title": "Síguenos",
+    "location": "Lima, Perú"
+  }
+}
