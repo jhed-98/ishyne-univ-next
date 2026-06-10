@@ -49,7 +49,7 @@ export default function Header({ whatsappNumber, locale }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'bg-onyx/95 backdrop-blur-md border-b border-onyx-border shadow-lg'
           : 'bg-transparent'
