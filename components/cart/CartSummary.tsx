@@ -54,11 +54,11 @@ export default function CartSummary({
   const subtotal = getSubtotal();
   const savings = getTotalSavings();
 
-  const handleCheckout = () => {
-    const message = buildWhatsAppMessage(items, locale as Locale);
-    const encoded = encodeURIComponent(message);
-    const url = `https://wa.me/${whatsappNumber}?text=${encoded}`;
+  const message = buildWhatsAppMessage(items, locale as Locale);
+  const encoded = encodeURIComponent(message);
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encoded}`;
 
+  const handleCheckoutClick = () => {
     trackEvent("begin_checkout", {
       currency: "PEN",
       value: subtotal,
@@ -70,21 +70,7 @@ export default function CartSummary({
       })),
     });
 
-    // trackEvent('whatsapp_click', { source: 'cart_checkout' });
-    // 1. Intentamos trackear. Si falla por el AdBlocker, no pasa nada.
-    try {
-      trackEvent("whatsapp_click", {
-        source: "cart_checkout",
-      });
-    } catch (error) {
-      console.warn(
-        "Tracking bloqueado por el navegador, continuando a WhatsApp...",
-        error,
-      );
-    }
-
-    // 2. Abrimos WhatsApp (Esto se ejecutará SÍ O SÍ)
-    window.open(url, "_blank", "noopener,noreferrer");
+    trackEvent("whatsapp_click", { source: "cart_checkout" });
 
     closeCart();
   };
@@ -114,14 +100,17 @@ export default function CartSummary({
       </div>
 
       {/* WhatsApp Checkout Button */}
-      <button
+      <a
         id="checkout-whatsapp-btn"
-        onClick={handleCheckout}
-        className="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-[#25D366]/20 hover:shadow-[#25D366]/40 hover:-translate-y-0.5 active:translate-y-0"
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleCheckoutClick}
+        className="w-full flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold py-4 rounded-2xl transition-all duration-300 shadow-lg shadow-[#25D366]/20 hover:shadow-[#25D366]/40 hover:-translate-y-0.5 active:translate-y-0 text-center"
       >
         <WhatsAppIcon size={20} />
         {t("checkout_whatsapp")}
-      </button>
+      </a>
 
       <p className="text-center text-xs text-cream/25">
         Serás redirigido a WhatsApp con tu pedido listo

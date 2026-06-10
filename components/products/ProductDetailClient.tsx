@@ -72,26 +72,16 @@ export default function ProductDetailClient({
     setTimeout(() => setAdded(false), 2500);
   };
 
-  const handleWhatsAppBuy = () => {
-    const msg = selectedTalla
-      ? `Hola, me interesa comprar: ${product.nombre} (Talla: ${selectedTalla}) x${quantity} — S/ ${(finalPrice * quantity).toFixed(2)}`
-      : `Hola, me interesa el producto: ${product.nombre}`;
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
-    // 1. Intentamos trackear. Si falla por el AdBlocker, no pasa nada.
-    try {
-      trackEvent("whatsapp_click", {
-        source: "product_detail",
-        item_id: product._id,
-      });
-    } catch (error) {
-      console.warn(
-        "Tracking bloqueado por el navegador, continuando a WhatsApp...",
-        error,
-      );
-    }
+  const whatsappMsg = selectedTalla
+    ? `Hola, me interesa comprar: ${product.nombre} (Talla: ${selectedTalla}) x${quantity} — S/ ${(finalPrice * quantity).toFixed(2)}`
+    : `Hola, me interesa el producto: ${product.nombre}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`;
 
-    // 2. Abrimos WhatsApp (Esto se ejecutará SÍ O SÍ)
-    window.open(url, "_blank", "noopener,noreferrer");
+  const handleWhatsAppBuyClick = () => {
+    trackEvent("whatsapp_click", {
+      source: "product_detail",
+      item_id: product._id,
+    });
   };
 
   return (
@@ -232,14 +222,17 @@ export default function ProductDetailClient({
             {added ? t("added") : t("add_to_cart")}
           </button>
 
-          <button
+          <a
             id="whatsapp-buy-btn"
-            onClick={handleWhatsAppBuy}
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={handleWhatsAppBuyClick}
             className="flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366]/10 transition-all font-semibold text-sm"
           >
             <WhatsAppIcon size={18} />
             {t("whatsapp_buy")}
-          </button>
+          </a>
         </div>
 
         {/* Description */}
