@@ -79,7 +79,7 @@ export default function CatalogSection({ products, locale }: CatalogSectionProps
           </div>
         </FadeInOnScroll>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 md:gap-6">
           {filtered.map((product, index) => (
             <FadeInOnScroll key={product._id} delay={index * 60} direction="up">
               <ProductCard product={product} locale={locale} priority={index < 4} />

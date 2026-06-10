@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import { useCartStore } from '@/store/cartStore';
-import { useCampaignStore } from '@/store/campaignStore';
-import { getImageUrl } from '@/sanity/lib/image';
-import { trackEvent } from '@/components/Analytics';
-import type { Product } from '@/types';
-import { CartIcon, CheckIcon } from '@/components/icons';
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { useCartStore } from "@/store/cartStore";
+import { useCampaignStore } from "@/store/campaignStore";
+import { getImageUrl } from "@/sanity/lib/image";
+import { trackEvent } from "@/components/Analytics";
+import type { Product } from "@/types";
+import { CartIcon, CheckIcon } from "@/components/icons";
 
 interface ProductCardProps {
   product: Product;
@@ -17,20 +17,28 @@ interface ProductCardProps {
   priority?: boolean;
 }
 
-export default function ProductCard({ product, locale, priority = false }: ProductCardProps) {
-  const t = useTranslations('catalog');
+export default function ProductCard({
+  product,
+  locale,
+  priority = false,
+}: ProductCardProps) {
+  const t = useTranslations("catalog");
   const [added, setAdded] = useState(false);
   const addItem = useCartStore((s) => s.addItem);
   const openCart = useCartStore((s) => s.openCart);
   const applyDiscount = useCampaignStore((s) => s.applyDiscount);
-  const discountPercent = useCampaignStore((s) => s.getDiscountPercent(product.categoria));
+  const discountPercent = useCampaignStore((s) =>
+    s.getDiscountPercent(product.categoria),
+  );
 
   const imageUrl = getImageUrl(product.imagen, 600, 750);
   const finalPrice = applyDiscount(product.precio, product.categoria);
-  const hasDiscount = discountPercent > 0 || (product.precio_antes && product.precio_antes > product.precio);
+  const hasDiscount =
+    discountPercent > 0 ||
+    (product.precio_antes && product.precio_antes > product.precio);
   const savings = hasDiscount ? product.precio - finalPrice : 0;
 
-  const defaultTalla = product.tallas?.[0] ?? 'Única';
+  const defaultTalla = product.tallas?.[0] ?? "Única";
 
   const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -38,10 +46,12 @@ export default function ProductCard({ product, locale, priority = false }: Produ
     addItem(product, defaultTalla, finalPrice);
     openCart();
     setAdded(true);
-    trackEvent('add_to_cart', {
-      currency: 'PEN',
+    trackEvent("add_to_cart", {
+      currency: "PEN",
       value: finalPrice,
-      items: [{ item_id: product._id, item_name: product.nombre, price: finalPrice }],
+      items: [
+        { item_id: product._id, item_name: product.nombre, price: finalPrice },
+      ],
     });
     setTimeout(() => setAdded(false), 2000);
   };
@@ -61,7 +71,10 @@ export default function ProductCard({ product, locale, priority = false }: Produ
       )}
 
       {/* Image */}
-      <Link href={`/${locale}/productos/${product.slug.current}`} className="block relative aspect-[3/4] overflow-hidden bg-onyx">
+      <Link
+        href={`/${locale}/productos/${product.slug.current}`}
+        className="block relative aspect-[3/4] overflow-hidden bg-onyx"
+      >
         <Image
           src={imageUrl}
           alt={product.nombre}
@@ -74,7 +87,7 @@ export default function ProductCard({ product, locale, priority = false }: Produ
         <div className="absolute inset-0 bg-onyx/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
           <span className="text-cream text-sm font-medium tracking-widest uppercase border border-cream/60 px-6 py-2 rounded-full backdrop-blur-sm">
-            {t('view_detail')}
+            {t("view_detail")}
           </span>
         </div>
       </Link>
@@ -93,20 +106,25 @@ export default function ProductCard({ product, locale, priority = false }: Produ
         </div>
 
         {/* Pricing */}
-        <div className="flex items-baseline gap-2">
-          <span className="text-lg font-bold text-champagne">
+        <div className="grid grid-cols-2 items-baseline gap-x-2 gap-y-1 md:flex md:items-baseline md:gap-2">
+          {/* Precio Final - Ocupa toda la fila superior en mobile si es necesario, o se alinea a la izquierda */}
+          <span className="text-lg font-bold text-champagne col-span-2 md:col-span-1 whitespace-nowrap">
             S/ {finalPrice.toFixed(2)}
           </span>
-          {hasDiscount && (
-            <span className="text-sm text-cream/40 line-through">
-              S/ {product.precio.toFixed(2)}
-            </span>
-          )}
-          {savings > 0 && (
-            <span className="text-xs text-green-400/80">
-              -S/ {savings.toFixed(2)}
-            </span>
-          )}
+
+          {/* Precios de descuento que se mostrarán en una segunda línea en mobile */}
+          <div className="flex items-center gap-2 col-span-2 md:flex md:items-baseline md:gap-2">
+            {hasDiscount && (
+              <span className="text-sm text-cream/40 line-through Richmond whitespace-nowrap">
+                S/ {product.precio.toFixed(2)}
+              </span>
+            )}
+            {savings > 0 && (
+              <span className="text-xs text-green-400/80 whitespace-nowrap">
+                -S/ {savings.toFixed(2)}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Quick Add */}
@@ -116,8 +134,8 @@ export default function ProductCard({ product, locale, priority = false }: Produ
             onClick={handleQuickAdd}
             className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 ${
               added
-                ? 'bg-green-500/20 text-green-400 border border-green-500/40'
-                : 'bg-onyx border border-onyx-border text-cream/70 hover:bg-champagne/10 hover:border-champagne/40 hover:text-champagne'
+                ? "bg-green-500/20 text-green-400 border border-green-500/40"
+                : "bg-onyx border border-onyx-border text-cream/70 hover:bg-champagne/10 hover:border-champagne/40 hover:text-champagne"
             }`}
           >
             {added ? (
@@ -128,13 +146,13 @@ export default function ProductCard({ product, locale, priority = false }: Produ
             ) : (
               <>
                 <CartIcon size={16} />
-                {t('add_to_cart')}
+                {t("add_to_cart")}
               </>
             )}
           </button>
         ) : (
           <div className="w-full py-2.5 rounded-xl text-sm text-center text-cream/30 border border-onyx-border">
-            {t('out_of_stock')}
+            {t("out_of_stock")}
           </div>
         )}
       </div>

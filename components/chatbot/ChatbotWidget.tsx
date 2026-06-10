@@ -198,11 +198,11 @@ export default function ChatbotWidget({ locale }: ChatbotWidgetProps) {
       {/* Proactive bubble */}
       {isProactiveBubble && !isOpen && (
         <div
-          className="fixed bottom-24 right-6 z-40 max-w-[220px] bg-onyx-light border border-champagne/30 text-cream/80 text-sm px-4 py-3 rounded-2xl rounded-br-none shadow-xl animate-slide-up cursor-pointer"
+          className="fixed bottom-24 left-24 z-40 max-w-[220px] bg-onyx-light border border-champagne/30 text-cream/80 text-sm px-4 py-3 rounded-2xl rounded-bl-none shadow-xl animate-slide-up cursor-pointer"
           onClick={handleOpen}
         >
           {t('proactive')}
-          <div className="absolute -bottom-2 right-4 w-3 h-3 bg-onyx-light border-r border-b border-champagne/30 rotate-45" />
+          <div className="absolute -bottom-2 left-4 w-3 h-3 bg-onyx-light border-r border-b border-champagne/30 rotate-45" />
         </div>
       )}
 
@@ -210,7 +210,7 @@ export default function ChatbotWidget({ locale }: ChatbotWidgetProps) {
       <button
         id="chatbot-toggle-btn"
         onClick={isOpen ? handleClose : handleOpen}
-        className="fixed bottom-24 right-[calc(1.5rem+56px+1rem)] z-40 w-12 h-12 rounded-full bg-onyx-light border border-champagne/40 text-champagne flex items-center justify-center hover:scale-110 hover:bg-champagne/10 transition-all duration-300 shadow-lg"
+        className="fixed bottom-6 left-[calc(1.5rem+56px+1rem)] z-40 w-12 h-12 rounded-full bg-onyx-light border border-champagne/40 text-champagne flex items-center justify-center hover:scale-110 hover:bg-champagne/10 transition-all duration-300 shadow-lg"
         aria-label={isOpen ? t('close') : 'Abrir chatbot'}
         aria-expanded={isOpen}
       >
@@ -222,7 +222,7 @@ export default function ChatbotWidget({ locale }: ChatbotWidgetProps) {
         role="dialog"
         aria-modal="true"
         aria-label="Asistente virtual de iShyne"
-        className={`fixed bottom-40 right-6 z-40 w-80 sm:w-96 flex flex-col bg-onyx-light border border-onyx-border rounded-3xl shadow-2xl overflow-hidden transition-all duration-400 ease-out-expo origin-bottom-right ${
+        className={`fixed bottom-40 left-6 z-40 w-80 sm:w-96 flex flex-col bg-onyx-light border border-onyx-border rounded-3xl shadow-2xl overflow-hidden transition-all duration-400 ease-out-expo origin-bottom-left ${
           isOpen
             ? 'opacity-100 scale-100 pointer-events-auto'
             : 'opacity-0 scale-95 pointer-events-none'
